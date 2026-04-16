@@ -1,4 +1,1 @@
-# language.made.easy
-
-calling functions and subrotines easy
-
+assembly x86 compiler
