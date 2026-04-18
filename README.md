@@ -1,7 +1,10 @@
 assembly x86 compiler
 
 
-javac --release 25 -cp .:antlr-4.9.2-complete.jar *.java
+
+java -jar antlr-4.9.2-complete.jar -visitor asm.g4
+
+
 
 
 javac --release 25 -cp .:antlr-4.9.2-complete.jar *.java
