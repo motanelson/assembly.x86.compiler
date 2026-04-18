@@ -47,6 +47,16 @@ public interface asmListener extends ParseTreeListener {
 	 */
 	void exitInstruction(asmParser.InstructionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link asmParser#operandList}.
+	 * @param ctx the parse tree
+	 */
+	void enterOperandList(asmParser.OperandListContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link asmParser#operandList}.
+	 * @param ctx the parse tree
+	 */
+	void exitOperandList(asmParser.OperandListContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link asmParser#mnemonic}.
 	 * @param ctx the parse tree
 	 */
@@ -106,4 +116,14 @@ public interface asmListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitMemory(asmParser.MemoryContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link asmParser#memoryExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterMemoryExpr(asmParser.MemoryExprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link asmParser#memoryExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitMemoryExpr(asmParser.MemoryExprContext ctx);
 }

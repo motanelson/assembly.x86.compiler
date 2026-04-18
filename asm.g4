@@ -1,39 +1,46 @@
+
 grammar asm;
 
 // ==========================
-// Regras de entrada principais
+// Parser
 // ==========================
+
 program
-    : line*
+    : (line | NEWLINE)* EOF
     ;
 
 line
-    : (labelDefinition | instruction | directive) NEWLINE
+    : (labelDefinition | instruction | directive)
     ;
 
 // ==========================
-// Definição de Rótulo
+// Label
 // ==========================
+
 labelDefinition
     : Identifier ':'
     ;
 
 // ==========================
-// Instruções Assembly
+// Instruções
 // ==========================
+
 instruction
-    : mnemonic operand (',' operand)? 
+    : mnemonic (operandList)?
+    ;
+
+operandList
+    : operand (',' operand)*
     ;
 
 mnemonic
-    : 'mov' | 'add' | 'sub' | 'mul' | 'div' 
-    | 'jmp' | 'je' | 'jne' | 'jg' | 'jl'
-    | 'cmp' | 'inc' | 'dec' | 'push' | 'pop'
+    : Identifier   // muito mais flexível
     ;
 
 // ==========================
 // Diretivas
 // ==========================
+
 directive
     : 'section' STRING
     | 'global' Identifier
@@ -43,6 +50,7 @@ directive
 // ==========================
 // Operandos
 // ==========================
+
 operand
     : register
     | immediate
@@ -51,20 +59,29 @@ operand
     ;
 
 register
-    : 'eax' | 'ebx' | 'ecx' | 'edx' | 'esp' | 'ebp' | 'esi' | 'edi'
+    : 'eax' | 'ebx' | 'ecx' | 'edx'
+    | 'esp' | 'ebp' | 'esi' | 'edi'
     ;
 
+// números imediatos
 immediate
-    : ('$'? Integer) | ('$'? Hexadecimal)
+    : ('$'? Integer)
+    | ('$'? Hexadecimal)
     ;
 
+// memória mais avançada
 memory
-    : '[' register ('+' Integer)? ']'
+    : '[' memoryExpr ']'
+    ;
+
+memoryExpr
+    : register (('+' | '-') (register | Integer))*
     ;
 
 // ==========================
-// Tokens Léxicos
+// Lexer
 // ==========================
+
 Identifier
     : [a-zA-Z_] [a-zA-Z0-9_]*
     ;

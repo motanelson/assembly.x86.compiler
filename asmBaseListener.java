@@ -63,6 +63,18 @@ public class asmBaseListener implements asmListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterOperandList(asmParser.OperandListContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOperandList(asmParser.OperandListContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterMnemonic(asmParser.MnemonicContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -130,6 +142,18 @@ public class asmBaseListener implements asmListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitMemory(asmParser.MemoryContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMemoryExpr(asmParser.MemoryExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMemoryExpr(asmParser.MemoryExprContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

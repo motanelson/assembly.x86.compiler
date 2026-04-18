@@ -1,7 +1,9 @@
-start:
-    mov eax,0
-    mov ebx,0
-    mov ecx,0
-    mov edx,0
-    mov ebp,0
-    jmp start
+
+section ".text"
+
+global _start
+
+_start:
+    mov eax, 1
+    mov ebx, 0
+    int 0x80
